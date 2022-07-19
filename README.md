@@ -1,3 +1,9 @@
-# TODO en este archivo definiremos las actividades de las carpetas DATA-SCIENCE
-# nuestro proyecto está en Python 3.8.10
-#"# Data-Science" 
+# Data-Science
+---------------------------
+
+
+nuestro proyecto está en python 3.8.10
+
+Ejercicios de python para trabajar con data science
+
+Hecho por Luis VallejoS
