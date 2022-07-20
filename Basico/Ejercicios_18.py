@@ -22,11 +22,30 @@ def longitud (l):
         except:
             return i+1
 
+'''Ejercicio 4: Función vocales'''
+
+def vocal(a):
+    return a.lower() in ['a','e','i','o','u','á','é','í','ó','ú']
+
+'''Ejercicio 5: Sumatorio y multiplicación'''
+
+def sumatorio(lista):
+    x = 0
+    for num in lista:
+        x+= num
+    return x
+
+def multi_lista(lista):
+    x = 1
+    for num in lista:
+        x*= num
+    return x
+
 ''' Función main'''
 
 def main():
     print("Primer ejercicio")
-    x = int(input("Introduce el primer digito Sa comparar: "))
+    x = int(input("Introduce el primer digito a comparar: "))
     y = int(input("Introduce el segundo: "))
 
     print(f"El mayor de los dos es: {num_max_2(x,y)}")
@@ -42,6 +61,17 @@ def main():
     
     lista = [0,19,18,1,-1]
     print(f"La lista tiene {longitud(lista)} elementos")
+
+    print("Cuarto ejercicio")
+    a = input("Introduce la letra que quieras comprobar: ")
+    if vocal(a): print(f"{a} es una vocal")
+    else: print(f"{a} es una consonante")
+
+    print(f"Quinto ejercicio")
+    
+    lista = [1,2,3,4]
+    print(f"La suma de los elementos de la lista da {sumatorio(lista)}")
+    print(f"La multiplicación de los elementos de la lista da {multi_lista(lista)}")
 
 
 if __name__ == "__main__":
