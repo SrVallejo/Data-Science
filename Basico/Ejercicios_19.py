@@ -33,6 +33,8 @@ def superposicion(s1,s2):
     
     return False
 
+
+
 '''Menu'''
 def pintar_menu():
     print("Opcion 1: Inversion cadena")
