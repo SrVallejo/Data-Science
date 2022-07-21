@@ -11,9 +11,9 @@ class Coche:
 
     def __init__(self,brand, model, color):
         self.brand = brand
-        self.model = "Zafira"
-        self.color = "Grey"
+        self.model = model
+        self.color = color
 
-    def imprimir():
+    def imprimir(self):
 
-        print("Que coche más bonito")
+        print("Prueba coche")

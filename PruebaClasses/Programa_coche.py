@@ -1,5 +1,5 @@
-from ClaseCoche import ClaseCoche
+from Class.ClaseCoche import Coche
 
-mi_coche = ClaseCoche("Opel","Astra","Grey")
+mi_coche = Coche(brand="Opel",model="Astra",color="Grey")
 mi_coche.imprimir()
 
