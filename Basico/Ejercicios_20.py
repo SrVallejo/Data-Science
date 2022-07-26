@@ -78,8 +78,11 @@ def c_mayusculas(cadena):
         * Imprimir la cantidad de personas con edades superiores a n
 """
 def mayores (tup, n):
+    count = 0
     for edad in tup:
-        if edad >= n: print(edad)
+        if edad >= n: count += 1
+    
+    return count
 
 # EJERCICIO 7
 
@@ -89,8 +92,10 @@ def mayores (tup, n):
 """
 
 def empiezapor(lista, letra):
+    count = 0
     for nombre in lista:
-        if nombre[0] == letra: print(nombre)
+        if nombre[0].upper() == letra.upper(): count +=1
+    return count
 
 # EJERCICIO 8
 
@@ -133,8 +138,8 @@ def pintar_menu():
     print("Opcion 3: Palabra más larga")
     print("Opcion 4: Filtrar palabras")
     print("Opcion 5: Contar mayusculas")
-    print("Opcion 6: Imprimir edades mayores")
-    print("Opcion 7: Imprimir palabras que empiezan por")
+    print("Opcion 6: Contar edades mayores")
+    print("Opcion 7: Contar palabras que empiezan por")
     print("Opcion 8: Contar vocales")
 
     print("Opcion -1: Salir")
@@ -192,7 +197,6 @@ def main():
             input("Continuar...")
 
         elif option == "5":
-            
             texto = input("Introduce un texto para contar: ")
             print(f"El texto tiene {c_mayusculas(texto)} mayusculas")
             input("Continuar...")
@@ -205,8 +209,9 @@ def main():
                 if num == '': break
                 else: edades.append(int(num))
             n = int(input("Edad mínima: "))
-            mayores(edades,n)
+            print(f"Hay {mayores(edades,n)} personas mayores de {n} años")
             input("Continuar...")
+
 
         elif option == "7":
             palabras = []
@@ -217,11 +222,11 @@ def main():
                 else: palabras.append(palabra)
             
             c = input("Letra inicial: ")
-            print(empiezapor(palabras,c))
+            print(f"Hay {empiezapor(palabras,c)} palabras que empiezan por {c}")
             input("Continuar...")
 
+
         elif option == "8":
-            
             texto = input("Introduce un texto para contar vocales: ")
             print("El texto tiene las siguientes vocales")
             print(contar_vocales(texto))
