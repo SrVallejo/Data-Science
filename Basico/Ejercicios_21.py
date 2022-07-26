@@ -9,9 +9,16 @@ from operator import truediv
 
 
 def bisiesto(año):
-    if año%100 != 0 and año%4 == 0: return True
-    else: return False
+    #Si el año es divisible por 4, podemos comprobar si es bisiesto
+    if año%4 == 0:
+        #Si el año no es divisible por 100, seguro que es bisiesto, devolvemos true
+        if año%100 != 0: return True
+        #Si el año es divisible por 100 y por 400, es bisiesto, devolvemos true
+        elif año%400 == 0: return True
 
+    #Salimos del if, sabiendo que o bien no es divisible por 4, o bien es divisible por 100 y no por 400,
+    #Devolvemos false.
+    return False
 
 #EJERCICIO 2
 
