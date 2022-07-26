@@ -31,7 +31,6 @@ cantidad de 10000 dolares al 4.5% de interés anual se convierte en 24117.14 dol
 def calcular_interes(dolares, interes, años):
     return dolares * ((1 + interes/100) ** años)
 
-print(round(calcular_interes(10000,4.5,20),2))
 
 #EJERCICIO 3
 
