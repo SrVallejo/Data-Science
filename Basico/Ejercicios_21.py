@@ -1,0 +1,107 @@
+import os
+clear = lambda: os.system('cls')
+# EJERCICIO 1
+
+'''Escriba una función es_bisiesto() que determine si un año determinado es un año bisiesto.
+Un año bisiesto es divisible por 4, pero no por 100. También es divisible por 400'''
+
+from operator import truediv
+
+
+def bisiesto(año):
+    if año%100 != 0 and año%4 == 0: return True
+    else: return False
+
+
+#EJERCICIO 2
+
+'''Haz un programa que pida al usuario una cantidad de dolares, una tasa de interés y un numero de años. 
+Muestra por pantalla en cuanto se habrá convertido el capital inicial transcurridos esos años si cada año 
+se aplica la tasa de interés introducida. Recordar que uncapital C dolares a un interés del x por cien 
+durante n años se convierte en C * (1 + x/100)elevado a n (años). Probar el programa sabiendo que una 
+cantidad de 10000 dolares al 4.5% de interés anual se convierte en 24117.14 dolares al cabo de 20 años.'''
+
+def calcular_interes(dolares, interes, años):
+    return dolares * ((1 + interes/100) ** años)
+
+print(round(calcular_interes(10000,4.5,20),2))
+
+#EJERCICIO 3
+
+'''Este programa muestra primero el listado de categorías de películas y pide al usuario que introduzca 
+el código de la categoría de la película y posterior a ello pide que el usuario introduzca el número de 
+días de atraso, y así se muestra al final el total a pagar.'''
+
+'''"CATEGORIA PRECIO CODIGO RECARGO/DIA DE ATRASO" "FAVORITOS 2.50 1 0.50" "NUEVOS 3.00 2 0.75" 
+"ESTRENOS 3.50 3 1.00" "SUPER ESTRENOS 4.00 4 1.50"'''
+
+def calculo_videoclub(codigo, dias):
+    if codigo == 1: return 2.50 + (0.50*dias)
+    elif codigo == 2: return 3 + (0.75*dias)
+    elif codigo == 3: return 3.50 + (1*dias)
+    elif codigo == 4: return 4 + (1.50*dias)
+
+
+def videoclub():
+    print("Favoritos: 1")
+    print("Nuevos: 2")
+    print("Estrenos: 3")
+    print("Super Estrenos: 4")
+    codigo = int(input("Introduce el codigo de la categoría de tu pelicula: "))
+    clear()
+    dias = int(input("Introduce el número de días de retraso: "))
+    clear()
+    print(f"Tendrá que pagar {calculo_videoclub(codigo,dias)} dolares por su pelicula, gracias")
+
+
+'''Menu'''
+def pintar_menu():
+    print("Opcion 1: Año bisiesto")
+    print("Opcion 2: Calcular interes")
+    print("Opcion 3: Devolver película")
+    print("Opcion -1: Salir")
+
+
+
+def main():
+
+    while True:
+        clear()
+        pintar_menu()
+        option = input("Elige una opción: ")
+        clear()
+
+        if option == "1":
+            año = int(input("Introduce un año: "))
+            if bisiesto(año): print(f"El año {año} es bisiesto")
+            else: print(f"El año {año} no es bisiesto")
+            input("Continuar...")
+
+        elif option == "2":
+            dolares = float(input("Introduce una cantidad de dolares inicial: "))
+            interes = float(input("Introduce una tasa de interes: "))
+            años = int(input("Introduce un número de años: "))
+            dolares_finales = round(calcular_interes(dolares,interes,años),2)
+            clear()
+            print(f"A una tasa del {interes}% en {años} años, sus {dolares} dolares, pasaran a ser {dolares_finales} dolares")
+            input("Continuar...")
+
+        elif option == "3":
+            videoclub()
+            input("Continuar...")
+
+
+        elif option == "-1":
+            print("Gracias por usar este menú")
+            input()
+            clear()
+            break
+
+        else:
+            print("La opción introducida no es valida")
+            input("Vuelva a intentarlo")
+
+
+if __name__ == "__main__":
+    main()
+
