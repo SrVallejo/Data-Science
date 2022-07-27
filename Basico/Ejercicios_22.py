@@ -67,12 +67,51 @@ def contar_palabras(texto):
     return palabras
 
 
+#EJERCICIO 4
+
+'''
+Escribir una función reciba una lista de notas y devuelva la lista de calificaciones 
+correspondientes a esas notas.
+'''
+
+def traduccion_notas(num):
+    if num > 0 and num < 5: return "Suspenso"
+    elif num < 6: return "Suficiente"
+    elif num < 7: return "Bien"
+    elif num < 9: return "Notable"
+    elif num <=10: return "Excelente"
+    return "Nota incorrecta"
+
+def calificaciones(lista):
+    dict_calificaciones = {}
+
+    for num in lista:
+        dict_calificaciones[num] = traduccion_notas(num)
+    
+    return dict_calificaciones
+
+
+#EJERCICIO 5
+
+'''
+Escribir una función reciba un diccionario con las asignaturas y las notas de un alumno y devuelva otro diccionario con las asignaturas
+en mayúsculas y las calificaciones correspondientes a las notas.
+'''
+
+def correccion_notas(dict_notas):
+    dict_nuevo = {}
+    for key in dict_notas.keys():
+        dict_nuevo[key.upper()] = traduccion_notas(dict_notas[key])
+    
+    return dict_nuevo
 
 '''Menu'''
 def pintar_menu():
     print("Opcion 1: Cesta de la compra")
     print("Opcion 2: Funcion a lista")
     print("Opcion 3: Contar palabras")
+    print("Opcion 4: Notas")
+    print("Opcion 5: Correción notas")
     print("Opcion -1: Salir")
 
 
@@ -140,6 +179,25 @@ def main():
             clear()
             texto = input("Introduce un texto: ")
             print(contar_palabras(texto))
+            input("Continuar...")
+
+        elif option == "4":
+            notas = []
+            print("Introduce una lista de notas, termina la lista con un enter")
+            while True:
+                num = input()
+                if num == '': break
+                else: notas.append(float(num))
+            
+            print(f"La lista de clasificaciones es: ")
+            print(calificaciones(notas))
+            input("Continuar...")
+
+        
+        elif option == "5":
+            dict_notas = {"Algebra": 3.2, "Trigonometria": 10, "Lógica":7.8}
+            print("Las notas corregidas son:")
+            print(correccion_notas(dict_notas))
             input("Continuar...")
             
         elif option == "-1":
