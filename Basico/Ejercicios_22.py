@@ -105,6 +105,29 @@ def correccion_notas(dict_notas):
     
     return dict_nuevo
 
+#EJERCICIO 6
+'''Escribir un programa que almacene la cadena de caracteres contraseña en una variable, pregunte al usuario por la contraseña e
+imprima por pantalla si la contraseña introducida por el usuario coincide con la guardada en la variable sin tener en cuenta mayúsculas y
+minúsculas.'''
+
+def contrasenya(user, password):
+    clear()
+    print(f"Bienvenido {user}")
+    count = 3
+    while True:
+        aux = input("Introduce tu contraseña: ")
+        if aux.upper() == password.upper():
+            clear()
+            print("Contraseña correcta")
+            return True
+        clear()
+        print("Contraseña incorrecta")
+        if count == 0: return False
+        print(f"Le quedan {count} intentos")
+        count -= 1
+
+
+#MAIN Y MENU
 '''Menu'''
 def pintar_menu():
     print("Opcion 1: Cesta de la compra")
@@ -112,6 +135,7 @@ def pintar_menu():
     print("Opcion 3: Contar palabras")
     print("Opcion 4: Notas")
     print("Opcion 5: Correción notas")
+    print("Opcion 6: Contraseña")
     print("Opcion -1: Salir")
 
 
@@ -199,7 +223,19 @@ def main():
             print("Las notas corregidas son:")
             print(correccion_notas(dict_notas))
             input("Continuar...")
-            
+        
+
+        elif option == "6":
+            user = input("Elige un nombre de usuario: ")
+            password = input("Elige una contraseña: ")
+            b = contrasenya(user,password)
+
+            if b:
+                print("Has acertado la contraseña")
+            else:
+                print("No has acertado la contraseña")
+            input("Continuar...")
+
         elif option == "-1":
             print("Gracias por usar este menú")
             input()
