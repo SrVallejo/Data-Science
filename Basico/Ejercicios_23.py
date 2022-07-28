@@ -101,15 +101,15 @@ def ejercicio_3():
     otra con todas las letras mayúsculas y otra solo con la primera letra del nombre y de los apellidos en mayúscula.
     El usuario puede introducir su nombre combinando mayúsculas y minúsculas como quiera.
 """
-def inicials_mayus(word):
-    put_mayus = True
+def upper_first_letter(word):
+    put_upper = True
     new_word = ""
     for letter in word:
-        if put_mayus:
+        if put_upper:
             letter = letter.upper()
-            put_mayus = False
+            put_upper = False
         elif letter == " ":
-            put_mayus = True
+            put_upper = True
         else:
             letter = letter.lower()
 
@@ -122,7 +122,7 @@ def ejercicio_4():
     name = input("Introduce tu nombre completo: ")
     print(name.lower())
     print(name.upper())
-    print(inicials_mayus(name))
+    print(upper_first_letter(name))
 
 
 
