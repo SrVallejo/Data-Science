@@ -50,7 +50,7 @@ def cuadrado(n):
 def contar_palabras(texto):
     palabras = {}
     palabra = ""
-    filtro =[".", ",", ";","?","¿","!","!","'",'"']
+    filtro =[".", ",", ";","?","¿","!","¡","'",'"']
 
 
     for letra in texto:
