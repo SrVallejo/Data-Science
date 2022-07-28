@@ -228,9 +228,8 @@ def main():
         elif option == "6":
             user = input("Elige un nombre de usuario: ")
             password = input("Elige una contraseña: ")
-            b = contrasenya(user,password)
 
-            if b:
+            if contrasenya(user,password):
                 print("Has acertado la contraseña")
             else:
                 print("No has acertado la contraseña")
