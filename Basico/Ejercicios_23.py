@@ -152,7 +152,7 @@ def ejercicio_5():
     Escribir un programa que pida al usuario que introduzca una frase en la consola y una vocal,
     y después muestre por pantalla la misma frase pero con la vocal introducida en mayúscula.
 """
-def text_letter_mayus(sentence,letter):
+def text_letter_upper(sentence,letter):
 
     new_text = ""
     letter = letter.lower()
@@ -166,7 +166,7 @@ def text_letter_mayus(sentence,letter):
 def ejercicio_6():
     sentence = input("Introduce una frase: ")
     vowel = input("Introduce una vocal: ")
-    print(text_letter_mayus(sentence,vowel))
+    print(text_letter_upper(sentence,vowel))
 
 # Ejercicio 7
 
@@ -222,9 +222,24 @@ def balance(sales_list, expenses_list):
     return list_balance
 
 def prepare_df_ejercicio_9():
-    Months = ["Enero","Febrero","Marzo","Abril"]
-    Sales = [30500,35600,28300,33900]
-    Expenses = [22000,23400,18100,20700]
+    Months = [
+        "Enero","Febrero","Marzo",
+        "Abril","Mayo","Junio",
+        "Julio","Agosto","Septiembre",
+        "Octubre","Noviembre","Diciembre"
+    ]
+    Sales = [
+        30500,35600,28300,
+        33900,30600,40000,
+        25000,22000,39000,
+        37000,32400,31700
+    ]
+    Expenses = [
+        22000,23400,18100,
+        20700,18000,17500,
+        16900,22500,25800,
+        30000,34000,19000
+    ]
 
     df_balance = pd.DataFrame({"Mes": Months, "Ventas": Sales, "Gastos": Expenses})
     balance_list = balance(df_balance["Ventas"].tolist(),df_balance["Gastos"].tolist())
@@ -234,15 +249,25 @@ def prepare_df_ejercicio_9():
 
 def ejercicio_9():
     df_balance = prepare_df_ejercicio_9()
-    print("Elige un mes de entre los de la lista:")
-    print(df_balance["Mes"].tolist())
-    month = input()
-    clear()
-    if month not in df_balance["Mes"].tolist():
-        print("No se encuentra el mes en la lista")
-        return False
+    print(df_balance)
 
-    print(df_balance.loc[df_balance["Mes"]==month,["Mes","Balance"]])
+    print("Elige meses de entre los de la lista, acaba en enter:")
+    print(df_balance["Mes"].tolist())
+    month = " "
+    month_list = []
+    while month != "":
+        month = input()
+        month_list.append(month)
+    clear()
+
+
+    total_balance = 0
+    for m in month_list:
+        total_balance += df_balance[df_balance.Mes==m]["Balance"].sum()
+    
+    print(f"La suma del balance de esos meses es de {total_balance}")
+
+
 
     
 
