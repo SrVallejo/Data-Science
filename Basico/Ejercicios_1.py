@@ -133,7 +133,10 @@ def ejercicio_8():
 
     print(L)
 
+    
     df_list = pd.DataFrame({"L": L})
+
+    print("\n DataFrame:")
     print (df_list)
 
 
@@ -191,15 +194,6 @@ def main():
             ejercicio_8()
             input("Continuar...")
 
-        elif option == "9":
-            ejercicio_9()
-            input("Continuar...")
-
-        elif option == "10":
-            ejercicio_10()
-            input("Continuar...")
-
-        
         elif option == "-1":
             print("Gracias por usar este menú")
             break
