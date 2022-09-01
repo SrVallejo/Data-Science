@@ -51,6 +51,8 @@ def ejercicio_2():
 
     L = [10, None, 8, 5, None, 20]
     df = pd.DataFrame({"Valores":L})
+    print("\nData Frame inicial")
+    print (df)
     print("\nData Frame sin none")
     print(df.fillna(-1))
 
