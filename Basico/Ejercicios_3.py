@@ -1,6 +1,6 @@
 import os
 clear = lambda: os.system('cls')
-import pandas as pd
+
 
 # EJERCICIO 1
 
