@@ -122,7 +122,7 @@ def ejercicio_1():
     for i in range(len(test)):
         if test[i]%2 == 0: test[i] = "Dos"
 
-    print(f"\nm)\nTest:\n{test}",flush=True)       
+    print(f"\nm)\nTest:\n{test}")       
 
 # EJERCICIO 2
 
