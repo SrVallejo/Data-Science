@@ -120,8 +120,6 @@ def ejercicio_2():
     df_value_counts = pd.DataFrame({"Values":values,"Repetitions":repetitions})
     print(f"6) DataFrame Value Counts:\n\n{df_value_counts}\n")
 
-ejercicio_2()
-
 
 #EJERCICIO 3
 
@@ -130,3 +128,82 @@ ejercicio_2()
 Haz el código que testee si esas 2 matrices son iguales
 '''
 
+def matrix_are_equal(m1,m2):
+    if m1.shape != m2.shape:
+        return False
+    for i in range(len(m1)):
+        for j in range(len(m1[0])):
+            if m1[i,j]!= m2[i,j]: return False
+    
+    return True
+
+def ejercicio_3():
+    m1 = np.array([
+        [1,2],
+        [3,4]
+    ])
+    m2 = np.array([
+        [3,7],
+        [3,4]
+    ])
+    print("1) Primera comprobación:\n")
+    print(m1)
+    print(f"\n{m2}\n")
+    if matrix_are_equal(m1,m2): print("Son iguales")
+    else: print("No son iguales")
+
+    m1 = np.array([
+        [10,20],
+        [5,6]
+    ])
+    m2 = np.array([
+        [10,20],
+        [5,6]
+    ])
+    print("\n2) Segunda comprobación:\n")
+    print(m1)
+    print(f"\n{m2}\n")
+    if matrix_are_equal(m1,m2): print("Son iguales")
+    else: print("No son iguales")
+
+#MENU Y MAIN
+
+'''Menu'''
+def pintar_menu():
+    print("Opcion 1: Lista de multiplos")
+    print("Opcion 2: Data frame value counts")
+    print("Opcion 3: Comparar matrices")
+    print("Opcion -1: Salir")
+
+def main():
+
+    while True:
+        clear()
+        pintar_menu()
+        option = input("Elige una opción: ")
+        clear()
+
+        if option == "1":
+            ejercicio_1()
+            input("Continuar...")
+
+        elif option == "2":
+            ejercicio_2()
+            input("Continuar...")
+
+        elif option == "3":
+            ejercicio_3()
+            input("Continuar...")
+
+
+        elif option == "-1":
+            print("Gracias por usar este menú")
+            break
+
+        else:
+            print("La opción introducida no es valida")
+            input("Vuelve a intentarlo")
+
+
+if __name__ == "__main__":
+    main()
