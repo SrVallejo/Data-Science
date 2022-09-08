@@ -114,6 +114,7 @@ def ejercicio_1():
 
     #4)
     print(f"\n4) Primeras 5 filas:\n{df.head(5)}")
+    print(f"\n Primeras 5 filas (otro método):\n{df.loc[:4]}")
     print(f"\nUltimas 2 filas:\n{df.tail(2)}")
 
     #5)
