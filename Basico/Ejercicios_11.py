@@ -142,16 +142,16 @@ Prueba para los números 6 y 3
 Realiza un algortimo para saber si son pares o impares
 '''
 
-def is_par(num):
+def is_pair(num):
     return num%2 == 0
 
 def ejercicio_2():
     x,y = 6,3
 
-    if is_par(x): print(f"{x} es un número par")
+    if is_pair(x): print(f"{x} es un número par")
     else: print(f"{x} es un número impar")
 
-    if is_par(y): print(f"{y} es un número par")
+    if is_pair(y): print(f"{y} es un número par")
     else: print(f"{y} es un número impar")
 
 
