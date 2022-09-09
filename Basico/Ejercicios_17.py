@@ -1,4 +1,5 @@
 import os
+from MenuClass import menu
 clear = lambda:os.system('cls')
 
 #EJERCICIO 17
@@ -60,36 +61,17 @@ def ejercicio_2():
 
 #MENU Y MAIN
 
-'''Menu'''
-def pintar_menu():
-    print("Opcion 1: Clase matemáticas")
-    print("Opcion 2: Clase materias y libros")
-    print("Opcion -1: Salir")
-
 def main():
-
+    funciones =[ejercicio_1,ejercicio_2]
+    opciones = ["Clase matemáticas","Clase materias y libros"]
+    mymenu = menu(funciones,opciones) 
     while True:
-        clear()
-        pintar_menu()
-        option = input("Elige una opción: ")
-        clear()
-
-        if option == "1":
-            ejercicio_1()
-            input("Continuar...")
-
-        elif option == "2":
-            ejercicio_2()
-            input("Continuar...")
-
-
-        elif option == "-1":
-            print("Gracias por usar este menú")
-            break
-
-        else:
-            print("La opción introducida no es valida")
-            input("Vuelve a intentarlo")
+        function = mymenu.select_menu()
+        if function == -1: break
+        else: function()
+        input("Continuar...")
+    input("Thanks for using this menu")
+    
 
 
 if __name__ == "__main__":
