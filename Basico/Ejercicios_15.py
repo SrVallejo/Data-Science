@@ -75,5 +75,70 @@ def ejercicio_1():
     df.loc[df.Name=="Juan","Result"] = None
     print(df)
 
+#EJERCICIO 3
 
-ejercicio_1()
+'''Escribe un programa que pida dos palabras y diga si riman o no. 
+Si coinciden las tres últimas letras tiene que decir que riman. 
+Si coinciden sólo las dos últimas tiene que decir que riman un poco y si no, que no riman.
+'''
+#If return 2, they rhyme a little, if return 3 they rhyme. If None, string too short.
+#1 or 0, don't rhyme.
+
+
+def rhyme_words(s1,s2):
+    if len(s1) <3 or len(s2) <3: return None
+    s1,s2 = s1.upper(), s2.upper()
+    count = 0
+    for i in range(-1,-4,-1):
+        if s1[i] != s2[i]: return count
+        count += 1
+    
+    return count
+
+def ejercicio_3():
+    word1 = input("Escribe la primera palabra: ")
+    word2 = input("Escribe la segunda palabra: ")
+    rhyme = rhyme_words(word1,word2)
+
+    print(f"Las palabras {word1} y {word2} ", end="")
+    if rhyme == 3: print("riman de forma consonante.")
+    elif rhyme == 2: print("riman un poco de forma consonante.")
+    else: print("no riman.")
+
+
+#MENU Y MAIN
+
+'''Menu'''
+def pintar_menu():
+    print("Opcion 1: Data frame concursantes")
+    print("Opcion 3: Palabras que riman")
+    print("Opcion -1: Salir")
+
+def main():
+
+    while True:
+        clear()
+        pintar_menu()
+        option = input("Elige una opción: ")
+        clear()
+
+        if option == "1":
+            ejercicio_1()
+            input("Continuar...")
+
+        elif option == "3":
+            ejercicio_3()
+            input("Continuar...")
+
+
+        elif option == "-1":
+            print("Gracias por usar este menú")
+            break
+
+        else:
+            print("La opción introducida no es valida")
+            input("Vuelve a intentarlo")
+
+
+if __name__ == "__main__":
+    main()
