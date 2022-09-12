@@ -83,14 +83,16 @@ def ejercicio_2():
 
     #3)
     female_total = 0
-    males = 0
+    male_total = 0
+    nulls = 0
 
     df_sex = df["Sex"]
 
     for row in df_sex:
         if row == "female": female_total += 1
-        else: males += 1
-    print(f"\n3) Con algoritmo\nTotal mujeres: {female_total}\nTotal hombres: {male_total}")
+        elif row == "male": male_total += 1
+        else: nulls +=1
+    print(f"\n3) Con algoritmo\nTotal mujeres: {female_total}\nTotal hombres: {male_total}\nValores nulos: {nulls}")
 
     df_females = df["Sex"].loc[df.Sex == "female"]
     print(f"\n4)\nData frame mujeres:\n{df_females.describe()}")
