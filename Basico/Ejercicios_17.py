@@ -69,7 +69,7 @@ def main():
         function = mymenu.select_menu()
         if function == -1: break
         else: function()
-        input("Continuar...")
+        input("Continue...")
     input("Thanks for using this menu")
     
 
