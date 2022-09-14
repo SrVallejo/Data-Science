@@ -67,12 +67,9 @@ def ejercicio_1():
     la función dada a cada uno de los elementos de la lista.
 """
 
-def aplica_funcion_lista(funcion, lista):
-    for i in range(len(lista)):
-        lista[i] = funcion(lista[i])
-    return lista
 
-def cuadrado(n):
+
+def square(n):
     return n*n
 
 def ejercicio_2():
@@ -83,7 +80,7 @@ def ejercicio_2():
         if num == '': break
         else: numeros.append(int(num))
             
-    numeros = aplica_funcion_lista(cuadrado,numeros)
+    numeros = list(map(square,numeros))
     clear()
     print("Tu lista con la función cuadrado aplicada:")
     print(numeros)
@@ -96,7 +93,7 @@ def ejercicio_2():
     Ejemplo: "Hola Mundo" --> {"Hola": 4, "Mundo": 5}
 """
 
-def contar_palabras(texto):
+def count_words(texto):
     palabras = {}
     palabra = ""
     filtro =[".", ",", ";","?","¿","!","¡","'",'"']
@@ -118,7 +115,7 @@ def contar_palabras(texto):
 def ejercicio_3():
     clear()
     texto = input("Introduce un texto: ")
-    print(contar_palabras(texto))
+    print(count_words(texto))
 
 #EJERCICIO 4
 
@@ -127,7 +124,7 @@ Escribir una función reciba una lista de notas y devuelva la lista de calificac
 correspondientes a esas notas.
 '''
 
-def traduccion_notas(num):
+def translate_scores(num):
     if num > 0 and num < 5: return "Suspenso"
     elif num < 6: return "Suficiente"
     elif num < 7: return "Bien"
@@ -139,7 +136,7 @@ def calificaciones(lista):
     dict_calificaciones = {}
 
     for num in lista:
-        dict_calificaciones[num] = traduccion_notas(num)
+        dict_calificaciones[num] = translate_scores(num)
     
     return dict_calificaciones
 
@@ -161,17 +158,17 @@ Escribir una función reciba un diccionario con las asignaturas y las notas de u
 en mayúsculas y las calificaciones correspondientes a las notas.
 '''
 
-def correccion_notas(dict_notas):
+def scores_fixing(dict_notas):
     dict_nuevo = {}
     for key in dict_notas.keys():
-        dict_nuevo[key.upper()] = traduccion_notas(dict_notas[key])
+        dict_nuevo[key.upper()] = translate_scores(dict_notas[key])
     
     return dict_nuevo
 
 def ejercicio_5():
     dict_notas = {"Algebra": 3.2, "Trigonometria": 10, "Lógica":7.8}
     print("Las notas corregidas son:")
-    print(correccion_notas(dict_notas))
+    print(scores_fixing(dict_notas))
 
 
 #EJERCICIO 6
@@ -179,7 +176,7 @@ def ejercicio_5():
 imprima por pantalla si la contraseña introducida por el usuario coincide con la guardada en la variable sin tener en cuenta mayúsculas y
 minúsculas.'''
 
-def contrasenya(user, password):
+def password_menu(user, password):
     clear()
     print(f"Bienvenido {user}")
     count = 3
@@ -199,7 +196,7 @@ def ejercicio_6():
     user = input("Elige un nombre de usuario: ")
     password = input("Elige una contraseña: ")
 
-    if contrasenya(user,password):
+    if password_menu(user,password):
         print("Has acertado la contraseña")
     else:
         print("No has acertado la contraseña")
