@@ -1,5 +1,6 @@
 import os
 clear = lambda: os.system('cls')
+from MenuClass import menu
 
 # EJERCICIO 1
 
@@ -23,6 +24,41 @@ def price_basket(basket, funcion):
         final_price += funcion(key,basket[key])
     return final_price
 
+
+def ejercicio_1():
+    basket = {}
+    print("Introduce precio y seguido su porcentaje, para acabar la lista, introduce enter")        
+    while True:
+        end = False
+        price = input()
+        if price == '': break
+
+        percentage = input()
+        if percentage == '':
+            percentage = 0
+            end = True
+        basket[int(price)] = int(percentage)
+        if end: break
+            
+    while True:
+        clear()
+        print("Introduce el numero de la función que quiere realizar:")
+        print("1. Aplicar IVA")
+        print("2. Aplicar descuento")
+        funcion = input()
+                
+        if funcion == "1":
+            funcion = apply_IVA
+            break
+        elif funcion == "2":
+            funcion = apply_discount
+            break
+        else: print("Funcion incorrecta")
+            
+    clear()
+    print(f"El precio final es de {price_basket(basket,funcion)} dolares")
+
+
 # EJERCICIO 2
 
 """
@@ -38,6 +74,19 @@ def aplica_funcion_lista(funcion, lista):
 
 def cuadrado(n):
     return n*n
+
+def ejercicio_2():
+    numeros = []
+    print("Introduce una lista de numeros, termina la lista con un enter")
+    while True:
+        num = input()
+        if num == '': break
+        else: numeros.append(int(num))
+            
+    numeros = aplica_funcion_lista(cuadrado,numeros)
+    clear()
+    print("Tu lista con la función cuadrado aplicada:")
+    print(numeros)
 
 # EJERCICIO 3
 
@@ -66,6 +115,10 @@ def contar_palabras(texto):
         palabras[palabra] = len(palabra)
     return palabras
 
+def ejercicio_3():
+    clear()
+    texto = input("Introduce un texto: ")
+    print(contar_palabras(texto))
 
 #EJERCICIO 4
 
@@ -90,6 +143,16 @@ def calificaciones(lista):
     
     return dict_calificaciones
 
+def ejercicio_4():
+    notas = []
+    print("Introduce una lista de notas, termina la lista con un enter")
+    while True:
+        num = input()
+        if num == '': break
+        else: notas.append(float(num))
+            
+    print(f"La lista de clasificaciones es: ")
+    print(calificaciones(notas))
 
 #EJERCICIO 5
 
@@ -104,6 +167,12 @@ def correccion_notas(dict_notas):
         dict_nuevo[key.upper()] = traduccion_notas(dict_notas[key])
     
     return dict_nuevo
+
+def ejercicio_5():
+    dict_notas = {"Algebra": 3.2, "Trigonometria": 10, "Lógica":7.8}
+    print("Las notas corregidas son:")
+    print(correccion_notas(dict_notas))
+
 
 #EJERCICIO 6
 '''Escribir un programa que almacene la cadena de caracteres contraseña en una variable, pregunte al usuario por la contraseña e
@@ -126,127 +195,39 @@ def contrasenya(user, password):
         print(f"Le quedan {count} intentos")
         count -= 1
 
+def ejercicio_6():
+    user = input("Elige un nombre de usuario: ")
+    password = input("Elige una contraseña: ")
+
+    if contrasenya(user,password):
+        print("Has acertado la contraseña")
+    else:
+        print("No has acertado la contraseña")
+
 
 #MAIN Y MENU
 '''Menu'''
-def pintar_menu():
-    print("Opcion 1: Cesta de la compra")
-    print("Opcion 2: Funcion a lista")
-    print("Opcion 3: Contar palabras")
-    print("Opcion 4: Notas")
-    print("Opcion 5: Correción notas")
-    print("Opcion 6: Contraseña")
-    print("Opcion -1: Salir")
-
-
 
 def main():
+    funciones =[
+        ejercicio_1,ejercicio_2,ejercicio_3,
+        ejercicio_4,ejercicio_5,ejercicio_6,
+    ]
+
+    opciones = [
+        "Cesta de la compra","Funcion a lista", "Contar palabras",
+        "Notas","Correción notas","Contraseña"
+    ]
+
+    my_menu = menu(funciones,opciones)
 
     while True:
-        clear()
-        pintar_menu()
-        option = input("Elige una opción: ")
-        clear()
-
-        if option == "1":
-            basket = {}
-            print("Introduce precio y seguido su porcentaje, para acabar la lista, introduce enter")
-            while True:
-                end = False
-                price = input()
-                if price == '': break
-
-                percentage = input()
-                if percentage == '':
-                    percentage = 0
-                    end = True
-                basket[int(price)] = int(percentage)
-                if end: break
-            
-            while True:
-                clear()
-                print("Introduce el numero de la función que quiere realizar:")
-                print("1. Aplicar IVA")
-                print("2. Aplicar descuento")
-                funcion = input()
-                
-                if funcion == "1":
-                    funcion = apply_IVA
-                    break
-                elif funcion == "2":
-                    funcion = apply_discount
-                    break
-                else:
-                    print("Funcion incorrecta")
-            
-            clear()
-            print(f"El precio final es de {price_basket(basket,funcion)} dolares")
-            input("Continuar...")
-
-
-
-        elif option == "2":
-            numeros = []
-            print("Introduce una lista de numeros, termina la lista con un enter")
-            while True:
-                num = input()
-                if num == '': break
-                else: numeros.append(int(num))
-            
-            numeros = aplica_funcion_lista(cuadrado,numeros)
-            clear()
-            print("Tu lista con la función cuadrado aplicada:")
-            print(numeros)
-            input("Continuar...")
-
-        elif option == "3":
-            clear()
-            texto = input("Introduce un texto: ")
-            print(contar_palabras(texto))
-            input("Continuar...")
-
-        elif option == "4":
-            notas = []
-            print("Introduce una lista de notas, termina la lista con un enter")
-            while True:
-                num = input()
-                if num == '': break
-                else: notas.append(float(num))
-            
-            print(f"La lista de clasificaciones es: ")
-            print(calificaciones(notas))
-            input("Continuar...")
-
-        
-        elif option == "5":
-            dict_notas = {"Algebra": 3.2, "Trigonometria": 10, "Lógica":7.8}
-            print("Las notas corregidas son:")
-            print(correccion_notas(dict_notas))
-            input("Continuar...")
-        
-
-        elif option == "6":
-            user = input("Elige un nombre de usuario: ")
-            password = input("Elige una contraseña: ")
-
-            if contrasenya(user,password):
-                print("Has acertado la contraseña")
-            else:
-                print("No has acertado la contraseña")
-            input("Continuar...")
-
-        elif option == "-1":
-            print("Gracias por usar este menú")
-            input()
-            clear()
-            break
-
-        else:
-            print("La opción introducida no es valida")
-            input("Vuelva a intentarlo")
-
+        function = my_menu.select_menu()
+        if function == -1: break
+        else: function()
+        input("Continue...")
+    input("Thanks for using this menu")
 
 if __name__ == "__main__":
     main()
-
 

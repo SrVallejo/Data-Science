@@ -1,12 +1,10 @@
+from MenuClass import menu
 import os
 clear = lambda: os.system('cls')
 # EJERCICIO 1
 
 '''Escriba una función es_bisiesto() que determine si un año determinado es un año bisiesto.
 Un año bisiesto es divisible por 4, pero no por 100. También es divisible por 400'''
-
-from operator import truediv
-
 
 def bisiesto(año):
     #Si el año es divisible por 4, podemos comprobar si es bisiesto
@@ -20,6 +18,11 @@ def bisiesto(año):
     #Devolvemos false.
     return False
 
+def ejercicio_1():
+    año = int(input("Introduce un año: "))
+    if bisiesto(año): print(f"El año {año} es bisiesto")
+    else: print(f"El año {año} no es bisiesto")
+
 #EJERCICIO 2
 
 '''Haz un programa que pida al usuario una cantidad de dolares, una tasa de interés y un numero de años. 
@@ -30,6 +33,16 @@ cantidad de 10000 dolares al 4.5% de interés anual se convierte en 24117.14 dol
 
 def calcular_interes(dolares, interes, años):
     return dolares * ((1 + interes/100) ** años)
+
+
+def ejercicio_2():
+    dolares = float(input("Introduce una cantidad de dolares inicial: "))
+    interes = float(input("Introduce una tasa de interes: "))
+    años = int(input("Introduce un número de años: "))
+    dolares_finales = round(calcular_interes(dolares,interes,años),2)
+    clear()
+    print(f"A una tasa del {interes}% en {años} años, sus {dolares} dolares, pasaran a ser {dolares_finales} dolares")
+
 
 
 #EJERCICIO 3
@@ -60,54 +73,24 @@ def videoclub():
     print(f"Tendrá que pagar {calculo_videoclub(codigo,dias)} dolares por su pelicula, gracias")
 
 
-'''Menu'''
-def pintar_menu():
-    print("Opcion 1: Año bisiesto")
-    print("Opcion 2: Calcular interes")
-    print("Opcion 3: Devolver película")
-    print("Opcion -1: Salir")
-
-
 
 def main():
+    funciones =[
+        ejercicio_1,ejercicio_2,videoclub,
+    ]
+
+    opciones = [
+        "Año bisiesto","Calcular interes","Devolver película"
+    ]
+
+    my_menu = menu(funciones,opciones)
 
     while True:
-        clear()
-        pintar_menu()
-        option = input("Elige una opción: ")
-        clear()
-
-        if option == "1":
-            año = int(input("Introduce un año: "))
-            if bisiesto(año): print(f"El año {año} es bisiesto")
-            else: print(f"El año {año} no es bisiesto")
-            input("Continuar...")
-
-        elif option == "2":
-            dolares = float(input("Introduce una cantidad de dolares inicial: "))
-            interes = float(input("Introduce una tasa de interes: "))
-            años = int(input("Introduce un número de años: "))
-            dolares_finales = round(calcular_interes(dolares,interes,años),2)
-            clear()
-            print(f"A una tasa del {interes}% en {años} años, sus {dolares} dolares, pasaran a ser {dolares_finales} dolares")
-            input("Continuar...")
-
-        elif option == "3":
-            videoclub()
-            input("Continuar...")
-
-
-        elif option == "-1":
-            print("Gracias por usar este menú")
-            input()
-            clear()
-            break
-
-        else:
-            print("La opción introducida no es valida")
-            input("Vuelva a intentarlo")
-
+        function = my_menu.select_menu()
+        if function == -1: break
+        else: function()
+        input("Continue...")
+    input("Thanks for using this menu")
 
 if __name__ == "__main__":
     main()
-
