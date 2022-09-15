@@ -1,3 +1,4 @@
+from MenuClass import menu
 import pandas as pd
 import os
 clear = lambda: os.system('cls')
@@ -84,7 +85,7 @@ def ejercicio_2():
 """
 
 def inverse_word(word):
-    for i in range(len(word)-1,-1,-1):
+    for i in range(-1,0-len(word)-1,-1):
         print(f"{word[i]} ",end="")
     print()
 
@@ -303,79 +304,31 @@ def ejercicio_10():
     if all(n >= 5 for n in notas): print("Felicidades, has aprobado todas")
     else: print("Te toca recuperar")
 
-#MENU Y MAIN
-
-'''Menu'''
-def pintar_menu():
-    print("Opcion 1: Clase Alumnos")
-    print("Opcion 2: Edad impresa")
-    print("Opcion 3: Inversión palabra")
-    print("Opcion 4: Nombre mayusculas/minusculas")
-    print("Opcion 5: Número de teléfono")
-    print("Opcion 6: Frase y vocal mayusculas")
-    print("Opcion 7: Dividir precio")
-    print("Opcion 8: Data frame ventas")
-    print("Opcion 9: Data frame balance")
-    print("Opcion 10: Preguntar notas")
-    print("Opcion -1: Salir")
+#MENU
 
 def main():
+    funciones =[
+        ejercicio_1,ejercicio_2,ejercicio_3,
+        ejercicio_4,ejercicio_5,ejercicio_6,
+        ejercicio_7,ejercicio_8,ejercicio_9,
+        ejercicio_10
+    ]
+
+    opciones = [
+        "Clase Alumnos","Edad impresa","Inversión palabra",
+        "Nombre mayusculas/minusculas","Número de teléfono","Frase y vocal mayusculas",
+        "Dividir precio","Data frame ventas","Data frame balance",
+        "Preguntar notas"
+    ]
+
+    my_menu = menu(funciones,opciones)
 
     while True:
-        clear()
-        pintar_menu()
-        option = input("Elige una opción: ")
-        clear()
-
-        if option == "1":
-            ejercicio_1()
-            input("Continuar...")
-
-        elif option == "2":
-            ejercicio_2()
-            input("Continuar...")
-
-        elif option == "3":
-            ejercicio_3()
-            input("Continuar...")
-
-        elif option == "4":
-            ejercicio_4()
-            input("Continuar...")
-
-        elif option == "5":
-            ejercicio_5()
-            input("Continuar...")
-        
-        elif option == "6":
-            ejercicio_6()
-            input("Continuar...")
-
-        elif option == "7":
-            ejercicio_7()
-            input("Continuar...")
-
-        elif option == "8":
-            ejercicio_8()
-            input("Continuar...")
-
-        elif option == "9":
-            ejercicio_9()
-            input("Continuar...")
-
-        elif option == "10":
-            ejercicio_10()
-            input("Continuar...")
-
-        
-        elif option == "-1":
-            print("Gracias por usar este menú")
-            break
-
-        else:
-            print("La opción introducida no es valida")
-            input("Vuelve a intentarlo")
-
+        function = my_menu.select_menu()
+        if function == -1: break
+        else: function()
+        input("Continue...")
+    input("Thanks for using this menu")
 
 if __name__ == "__main__":
     main()
