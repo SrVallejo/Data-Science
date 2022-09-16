@@ -80,20 +80,20 @@ class Persona:
 class Cuenta:
 
     titular = ""
-    cantidad = 0
+    _cantidad = 0
 
     def __init__(self, titular, cantidad = 0):
         self.titular = titular
-        self.cantidad = cantidad
+        self._cantidad = cantidad
 
     def is_red_numbers(self):
-        if self.cantidad < 0:
+        if self._cantidad < 0:
             print("La cuenta está en números rojos")
             return False
         return True
 
     def print(self):
-        print(f"La cuenta bancaria de {self.titular} tiene {self.cantidad}€")
+        print(f"La cuenta bancaria de {self.titular} tiene {self._cantidad}€")
         self.is_red_numbers()
         print()
     
@@ -101,8 +101,8 @@ class Cuenta:
         if x < 0:
             print("Error: Número negativo")
             return False
-        self.cantidad += x
-        print(f"Ha ingresado {x}€.\nLa cuenta de {self.titular} dispone de {self.cantidad}€")
+        self._cantidad += x
+        print(f"Ha ingresado {x}€.\nLa cuenta de {self.titular} dispone de {self._cantidad}€")
         self.is_red_numbers()
         print()
 
@@ -110,8 +110,8 @@ class Cuenta:
         if x < 0:
             print("Error: Número negativo")
             return False
-        self.cantidad -= x
-        print(f"Ha retirado {x}€ de su cuenta bancaria.\nLa cuenta de {self.titular} ahora dispone de {self.cantidad}€")
+        self._cantidad -= x
+        print(f"Ha retirado {x}€ de su cuenta bancaria.\nLa cuenta de {self.titular} ahora dispone de {self._cantidad}€")
         self.is_red_numbers()
         print()
     
@@ -133,36 +133,36 @@ class Cuenta:
 class CuentaJoven(Cuenta):
     age_limit = 25
     age = 0
-    def __init__(self, titular,edad, cantidad = 0):
-        self.titular = titular
-        self.cantidad = cantidad
+    bonus = 0
+
+    def __init__(self, titular,edad, cantidad = 0, bonus = 0):
+        super().__init__(titular,cantidad)
         self.age = edad
+        if bonus > 0 and bonus <= 100: self.bonus = bonus
 
     def __check_age(self):
         return (self.age <= self.age_limit) & (self.age >= 18)
 
     
+    def ingresar(self,x: float):
+        if self.bonus > 0:
+            x += (self.bonus/100)*x
+            print(f"Su ingreso con el bono de {self.bonus}% es de {x}€")
+        super().ingresar(x)
 
     def retirar(self, x: float):
 
-        if x < 0:
-            print("Error: Número negativo")
-            return False
         if not self.__check_age():
             print("Edad no validad para retirar dinero\n")
             return False
 
-        self.cantidad -= x
-        print(f"Ha retirado {x}€ de su cuenta bancaria.\nLa cuenta de {self.titular} ahora dispone de {self.cantidad}€")
-        self.is_red_numbers()
-        print()
+        super().retirar(x)
 
 
     def print(self):
         print("Cuenta Joven")
-        print(f"La cuenta bancaria de {self.titular} tiene {self.cantidad}€")
-        self.is_red_numbers()
-        print()
+        super().print()
+    
 
     
 

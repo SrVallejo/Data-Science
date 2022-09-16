@@ -104,12 +104,14 @@ def ejercicio_4():
 
 
 def ejercicio_5():
-    cuenta_joven = CuentaJoven("Anastasia",19,3000)
+    print("1)Cuenta de Anastasia:")
+    cuenta_joven = CuentaJoven("Anastasia",19,3000,10)
     cuenta_joven.ingresar(3000)
     cuenta_joven.retirar(100)
     cuenta_joven.print()
 
-    cuenta_joven = CuentaJoven("Penelope",49,2450)
+    print("2)Cuenta de Penelope")
+    cuenta_joven = CuentaJoven("Penelope",49,2450,15)
     cuenta_joven.ingresar(3000)
     cuenta_joven.retirar(100)
     cuenta_joven.print()
