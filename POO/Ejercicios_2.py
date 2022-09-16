@@ -1,5 +1,5 @@
 from MenuClass import menu
-from ComplexNum import Complex
+from ClassComplexNum import Complex
 
 '''
 Ejercicios
@@ -29,15 +29,29 @@ def numeros_complejos():
     print(f"{c1} - {c2} = {c1-c2}")
     print(f"{c1} * {c2} = {c1*c2}")
     print(f"{c1} / {c2} = {c1/c2}")
-    if c1 == c2: print("Son iguales")
-    else: print("Son diferentes")
+    print("Comparación !=")
+    if c1 != c2: print("Son diferentes")
+    else: print("Son iguales")
 
-    print("\nSegunda comparación")
+    print("\nComparación ==")
     c1 = Complex(10,14)
     c2 = Complex(10,14)
     print(f"{c1} y {c2}")
     if c1 == c2: print("Son iguales")
     else: print("Son diferentes")
+
+'''
+6) Crea una clase persona. Sus atributos deben ser su nombre y su edad. Además crea un método cumpleaños, 
+que aumente en 1 la edad de la persona.
+
+7) Para la clase anterior definir el método str. Debe retornar al menos el nombre de la persona.
+
+8) Extender la clase persona agregando un atributo saldo y un método transferencia(self, persona2, monto). 
+El saldo representa el dinero que tiene la persona. 
+El método transferencia hace que la Persona que llama el método le transfiera la cantidad monto al objeto persona2. 
+Si no tiene el dinero suficiente no se ejecuta la acción.
+'''
+
 
 #MENU
 def main():

@@ -31,4 +31,7 @@ class Complex:
     def __eq__(self,other):
         return (self.a == other.a) & (self.b == other.b)
 
+    def __ne__(self,other):
+        return (self.a != other.a) or (self.b != other.b)
+
 
