@@ -1,5 +1,6 @@
 from MenuClass import menu
 from ClassComplexNum import Complex
+from ClassHuman import Human
 
 '''
 Ejercicios
@@ -52,15 +53,33 @@ El método transferencia hace que la Persona que llama el método le transfiera 
 Si no tiene el dinero suficiente no se ejecuta la acción.
 '''
 
+def persona_transferencia():
+    persona1 = Human("Luis",31)
+    persona2 = Human("Marina",28)
+
+    print(f"Prueba imprimir:\n{persona1} y {persona2}")
+    print("Cumpleaños:")
+    persona1.aniversary()
+    print(persona1)
+
+    print(f"\nTransferencia:")
+    persona1.add_money(100)
+    persona1.check_money()
+    persona2.check_money()
+    persona1.transference(persona2,30)
+    persona1.check_money()
+    persona2.check_money()
+
+    
 
 #MENU
 def main():
     funciones =[
-        numeros_complejos
+        numeros_complejos,persona_transferencia
     ]
 
     opciones = [
-        "Números Complejos"
+        "Números Complejos","Clase Personas y transferencia"
     ]
 
     my_menu = menu(funciones,opciones)
