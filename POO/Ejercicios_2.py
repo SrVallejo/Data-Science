@@ -54,11 +54,11 @@ Si no tiene el dinero suficiente no se ejecuta la acción.
 '''
 
 def persona_transferencia():
-    persona1 = Human("Luis",31)
-    persona2 = Human("Marina",28)
+    persona1 = Human("Joan",31)
+    persona2 = Human("Mercedes",28)
 
     print(f"Prueba imprimir:\n{persona1} y {persona2}")
-    print("Cumpleaños:")
+    print("\nCumpleaños:")
     persona1.aniversary()
     print(persona1)
 
