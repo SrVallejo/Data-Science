@@ -4,21 +4,19 @@ from ComplexNum import Complex
 '''
 Ejercicios
 
-1) Crearemos un nuevo tipo llamado NumeroComplejo. Este tipo tiene un atributo x para la coordenada en x e y para la coordenada en y. Representa un número complejo de la forma (x, y).
+1) Crearemos un nuevo tipo llamado NumeroComplejo. 
+Este tipo tiene un atributo x para la coordenada en x e y para la coordenada en y. 
+Representa un número complejo de la forma (x, y).
 
 2) Ahora defina dentro de la clase NumeroComplejo un función imprimir donde muestre los valores de x e y.
 
 3) Define la función str para la clase NumeroComplejo para poder imprimir usando la función print.
 
-4) definie una función que compara dos números complejos, ya que si dos objetos distintos tienen sus atributos iguales, no se consideran iguales.
+4) definie una función que compara dos números complejos, 
+ya que si dos objetos distintos tienen sus atributos iguales, no se consideran iguales.
 
-5) Realiza un método que sume dos numeros complejos sin modificiar los objetos originales, ya que se retorna un nuevo numero NumeroComplejo.
-
-6) Crea una clase persona. Sus atributos deben ser su nombre y su edad. Además crea un método cumpleaños, que aumente en 1 la edad de la persona.
-
-7) Para la clase anterior definir el método str. Debe retornar al menos el nombre de la persona.
-
-8) Extender la clase persona agregando un atributo saldo y un método transferencia(self, persona2, monto). El saldo representa el dinero que tiene la persona. El método transferencia hace que la Persona que llama el método le transfiera la cantidad monto al objeto persona2. Si no tiene el dinero suficiente no se ejecuta la acción.
+5) Realiza un método que sume dos numeros complejos sin modificiar los objetos originales, 
+ya que se retorna un nuevo numero NumeroComplejo.
 
 
 '''
