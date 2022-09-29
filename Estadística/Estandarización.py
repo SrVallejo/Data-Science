@@ -18,8 +18,9 @@ print(f"Zscore 3: {zscore(0.01,0.002,0.01)}")
 '''
 Ejercicio 2:
 
-El GPA promedio de los estudiantes en una escuela de secundaria local es 3.2 con una desviación estándar de 0.3. 
-Jenny tiene GPA de 2.8 ¿A cuántas desviaciones estándar de la media está el GPA de Jenny?
+El GPA promedio de los estudiantes en una escuela de secundaria local es 3.2 con una desviación 
+estándar de 0.3. Jenny tiene GPA de 2.8 
+¿A cuántas desviaciones estándar de la media está el GPA de Jenny?
 
 '''
 print(f"\nEjercicio 2:\nZscore = {zscore(3.2,0.3,2.8)}" )
@@ -28,8 +29,8 @@ print(f"\nEjercicio 2:\nZscore = {zscore(3.2,0.3,2.8)}" )
 Ejercicio 3:
 
 Jenny está tratando de demostrarles a sus padres que le va mejor en la escuela que a su prima. 
-Su prima asiste a una escuela de secundaria diferente donde el GPA promedio es 3.4 con una desviación estándar 
-de 0.2. El prima de Jenny tiene un GPA de 3.0.
+Su prima asiste a una escuela de secundaria diferente donde el GPA promedio es 3.4 
+con una desviación estándar de 0.2. La prima de Jenny tiene un GPA de 3.0.
 ¿se está desempeñando Jenny mejor que su prima según los puntajes estándar?
 
 '''
@@ -51,4 +52,5 @@ z = 2.3
 x1 = 78 + 8*2.3
 x2= 78 - 8*2.3
 print("\nEjercicio 4:")
-print(f"La nota de Kyle será de {x1} o de {x2} dependiendo si ha sacado una nota por encima de la media, o por debajo")
+print(f"La nota de Kyle será de {x1} o de {x2} ",end="")
+print("dependiendo si ha sacado una nota por encima de la media, o por debajo")
