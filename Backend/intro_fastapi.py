@@ -8,9 +8,13 @@ from pydantic import BaseModel
 
 irisapp = FastAPI()
 IRIS_ROUTE = r"../Data Sets/iris.csv"
+
+'''
 @irisapp.get("/test/")
 async def test_1():
     return "Bienvenido a FastAPI"
+'''
+
 
 @irisapp.get("/iris/")
 async def iris():
