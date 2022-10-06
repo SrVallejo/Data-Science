@@ -7,7 +7,7 @@ from pydantic import BaseModel
 
 
 irisapp = FastAPI()
-ROUTE_IRIS = r"../Data Sets/iris.csv"
+IRIS_ROUTE = r"../Data Sets/iris.csv"
 @irisapp.get("/test/")
 async def test_1():
     return "Bienvenido a FastAPI"
@@ -15,7 +15,7 @@ async def test_1():
 @irisapp.get("/iris/")
 async def iris():
     # Crear el dataframe con la información de iris:
-    df = pd.read_csv(ROUTE_IRIS)
+    df = pd.read_csv(IRIS_ROUTE)
     #print(df)
     # lo transformamos a json para poder gestionarlo desde el front:
     data = df.to_json(orient="index")
@@ -36,7 +36,7 @@ class Iris(BaseModel):
 async def insertData(item: Iris):
 # leemos el archivo iris.csv e
 # insertar en la última línea los campos a insertar
-    with open(ROUTE_IRIS, "a", newline="") as csvfile:
+    with open(IRIS_ROUTE, "a", newline="") as csvfile:
     # Nombres de los campos:
         fieldnames = ['sepal_length', 'sepal_width',
         'petal_length', 'petal_width', 'species']
@@ -52,3 +52,18 @@ async def insertData(item: Iris):
         })
     #retornamos los valores que comprende la ultima fila añadida
     return item
+
+@irisapp.put("/UpdateData/")
+async def insertData(item_id: int, item: Iris):
+    df = pd.read_csv(IRIS_ROUTE)
+    df.loc[df.index[item_id], "sepal_length"] = item.sepal_length
+    df.loc[df.index[item_id], "sepal_width"] = item.sepal_width
+    df.loc[df.index[item_id], "petal_length"] = item.petal_length
+    df.loc[df.index[item_id], "petal_width"] = item.petal_width
+    df.loc[df.index[item_id], "species"] = item.species
+    df.to_csv(IRIS_ROUTE, index = False)
+
+    return {"item_id":item_id, **item.dict()}
+
+    
+
