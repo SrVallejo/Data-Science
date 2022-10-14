@@ -182,6 +182,7 @@ def actualizar_nota_id(cur):
 '''Querys'''
 
 def consultas_notas(cur):
+    #QUERY DEL EJERCICIO = "SELECT FROM notas WHERE notas >= 5 AND notas <= 6.5;
     condition = input("SELECT FROM notas WHERE ")
     select_query(cur,"notas",condition)
     
