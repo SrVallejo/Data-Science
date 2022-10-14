@@ -137,9 +137,7 @@ def insertar_valores_iniciales(cur):
     ediciones = ['Uno','Dos','Tres']
 
     for num in ediciones:
-        if not insert_edicion(cur,num):
-            print ("Error edicion")
-            error = True
+        if not insert_edicion(cur,num): error = True
         
 
     notas = [
@@ -154,9 +152,7 @@ def insertar_valores_iniciales(cur):
     ]
 
     for fila in notas:
-        if(not insert_notas(cur, fila[0],fila[1],fila[2],fila[3])):
-            print("Error notas")
-            error = True
+        if(not insert_notas(cur, fila[0],fila[1],fila[2],fila[3])): error = True
     
     if not error: print("Todos los registros ingresados correctamente")
 
